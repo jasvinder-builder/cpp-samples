@@ -1,0 +1,25 @@
+# CMake build directory
+build/
+
+# Compiled object files
+*.o
+
+# Compiled executables
+*.exe
+*.out
+
+# Generated files
+Makefile
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+
+# IDE specific files
+.vscode/
+.idea/
+
+# Mac specific files
+.DS_Store
+
+# Clang format file
+.clang-format
