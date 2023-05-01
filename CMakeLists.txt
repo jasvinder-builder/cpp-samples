@@ -12,3 +12,8 @@ target_link_libraries(producer-consumer ${CMAKE_THREAD_LIBS_INIT})
 add_executable(async async/main.cpp)
 
 add_executable(promise promise/main.cpp)
+target_link_libraries(promise ${CMAKE_THREAD_LIBS_INIT})
+
+add_executable(packaged-task packaged-task/main.cpp)
+target_link_libraries(packaged-task ${CMAKE_THREAD_LIBS_INIT})
+
