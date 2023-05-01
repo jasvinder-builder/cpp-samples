@@ -4,6 +4,8 @@
 #include <condition_variable>
 #include <thread>
 
+constexpr int NUM_MSGS = 5;
+
 struct Message {
     int value;
 };
@@ -12,24 +14,22 @@ class PC {
 public:
 
 void producer() {
-    for (int i = 0; i < 10; i++) {
-        {
-            std::unique_lock<std::mutex> lck(mtx);
-            queue.push(Message{i});
-            cv.notify_one();
-        }
+    for (int i = 0; i < NUM_MSGS; i++) {
+        std::unique_lock<std::mutex> lck(mtx);
+        queue.push(Message{i});
         std::cout << "Pushed msg: " << i << std::endl; 
+        cv.notify_one();
     }
 }
 
 void consumer() {
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < NUM_MSGS; i++) {
         std::unique_lock<std::mutex> lck(mtx);
         cv.wait(lck, [this]{return !queue.empty();});
         int val = queue.front().value;
         queue.pop();
-        lck.unlock();
         std::cout << "Popped msg: " << i << std::endl;
+        lck.unlock();
     }
 }
 
