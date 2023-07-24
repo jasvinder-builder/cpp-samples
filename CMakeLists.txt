@@ -4,6 +4,8 @@ project(Cpp-samples)
 
 set(CMAKE_CXX_STANDARD 17)
 
+set(CMAKE_BUILD_TYPE Debug)
+
 add_executable(producer-consumer producer-consumer/main.cpp)
 
 find_package(Threads REQUIRED)
@@ -22,4 +24,6 @@ add_executable(function function/main.cpp)
 add_executable(exception exception/main.cpp)
 
 #add_executable(lru lru/main.cpp)
+
+add_executable(producer-consumer1 producer-consumer1/main.cpp)
 
